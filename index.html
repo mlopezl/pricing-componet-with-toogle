@@ -1,52 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | [Challenge Name Here]</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 0.6875rem; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+    <title>Frontend Mentor | [Challenge Name Here]</title>
 
-  Our Pricing
-  Annually
-  Monthly
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1 class="title">Our Pricing</h1>
+        <div class="selector">
+          <p>Annually</p>
+           <div class="switch">
+            <input type="checkbox" id="toggle">
+            <div class="checkbox-slider"></div>
+         </div>
+          <p>Monthly</p>
+        </div>
+      </header>
+      <main class="cards">
+        <article class="card">
+          <h2 class="plan__tipe">Basic</h2>
+          <p class="price">&dollar;<strong>19.99</strong></p>
+          <ul class="plan__description">
+            <li>500 GB Storage</li>
+            <li>2 Users Allowed</li>
+            <li>Send up to 3 GB</li>
+          </ul>
+          <button>Learn More</button>
+        </article>
+        <article class="card">
+          <h2 class="plan__tipe">Professional</h2>
+          <p class="price">&dollar;<strong>24.99</strong></p>
+          <ul class="plan__description">
+            <li>1 TB Storage</li>
+            <li>5 Users Allowed</li>
+            <li>Send up to 10 GB</li>
+          </ul>
+          <button>Learn More</button>
+        </article>
+        <article class="card">
+          <h2 class="plan__tipe">Master</h2>
+          <p class="price">&dollar;<strong>39.99</strong></p>
+          <ul class="plan__description">
+            <li>2 TB Storage</li>
+            <li>10 Users Allowed</li>
+            <li>Send up to 10 GB</li>
+          </ul>
+          <button>Learn More</button>
+        </article>
 
-  Basic
-  &dollar;19.99
-  &dollar;199.99
-  500 GB Storage
-  2 Users Allowed
-  Send up to 3 GB
-  Learn More
-
-  Professional
-  &dollar;24.99
-  &dollar;249.99
-  1 TB Storage
-  5 Users Allowed
-  Send up to 10 GB
-  Learn More
-
-  Master
-  &dollar;39.99
-  &dollar;399.99
-  2 TB Storage
-  10 Users Allowed
-  Send up to 20 GB
-  Learn More
-  
-  <footer class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </footer>
-</body>
+      </main>
+    </div>
+    
+  </body>
 </html>
