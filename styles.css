@@ -2,6 +2,7 @@
 
 :root{
     --Linear-gradient: linear-gradient(to left, hsl(238, 63%, 64%), hsl(237, 73%, 79%));
+    --Linear-gradient-bottom: linear-gradient(to bottom, hsl(237, 73%, 79%), hsl(238, 63%, 64%));
     --light-purple: linear-gradient(to left, hsl(237, 73%, 79%), hsl(237, 73%, 79%));
     --Blue-50: hsl(240, 78%, 98%);
     --White: hsl(0,100%, 100%);
@@ -39,6 +40,11 @@ body{
     top: -50px;
     right: -180px;
 }
+
+.bottom-pattern{
+    display: none;
+}
+
 
 .header{
     width: 100%;
@@ -98,6 +104,15 @@ body{
     background: var(--light-purple);
 }
 
+.switch:focus{
+    border: none;
+    outline: none;
+}
+
+.switch:focus .checkbox-slider{
+    background: var(--light-purple);
+}
+
 .checkbox-slider::before {
   position: absolute;
   content: "";
@@ -116,10 +131,12 @@ input:checked + .checkbox-slider::before {
 
 .cards{
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 30px;
     align-items: center;
-    margin-bottom: 30px;
+    justify-content: center;
+    margin-bottom: 100px;
+    padding: 10px;
 }
 
 .card{
@@ -136,9 +153,17 @@ input:checked + .checkbox-slider::before {
     box-shadow: 0px 1px 15px var(--shadow);
 }
 
+.card__focus{
+    background: var(--Linear-gradient-bottom);
+}
+
 .plan__tipe{
     font-size: 1.2rem;
     color: var(--Gray-650);
+}
+
+.card__focus .plan__tipe{
+    color: var(--White);
 }
 
 .price{
@@ -152,6 +177,10 @@ input:checked + .checkbox-slider::before {
 .price strong{
     font-size: 4rem;
     font-weight: 700;
+}
+
+.card__focus .price{
+    color: var(--White);
 }
 
 .plan__description{
@@ -176,6 +205,11 @@ input:checked + .checkbox-slider::before {
     opacity: 80%;
 }
 
+.card__focus .plan__description li{
+    color: var(--White);
+    border-bottom: 2px solid var(--shadow);
+}
+
 .plan__description li:first-child{
     border-top: 1px solid var(--shadow);
 }
@@ -190,5 +224,43 @@ input:checked + .checkbox-slider::before {
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 1px;
+}
+
+.card__focus button{
+    background: var(--White);
+    color: var(--Gray-650);
+}
+
+@media(min-width: 426px ){
+    .top-pattern{
+        right: -100px;
+    }
+
+    .bottom-pattern{
+        display: block;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        z-index: -1;
+    }
+}
+
+@media(min-width: 769px ){
+    .top-pattern{
+        top: 0px;
+        right: -30px;
+    }
+
+}
+
+@media(min-width: 980px ){
+    .cards{
+        gap: 0;
+    }
+
+    .card__focus{
+        height: 440px;
+    }
+
 }
 
