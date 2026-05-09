@@ -3,6 +3,8 @@ const basicPrice = document.getElementById("basic-price");
 const professionalPrice = document.getElementById("professional-price");
 const masterPrice = document.getElementById("master-price");
 const switchElement = document.querySelector(".switch");
+const cards = document.querySelector('.cards');
+
 
 toggle.addEventListener("change", () => {
   if (!toggle.checked) {
@@ -24,3 +26,24 @@ switchElement.addEventListener('keydown', (e) => {
     );
   }
 });
+
+function focusCardHandler(card) {
+  if (!card) return;
+
+  Array.from(cards.children).forEach(el => {
+    el.classList.remove('card__focus');
+  });
+
+  card.classList.add('card__focus');
+}
+
+cards.addEventListener('click', (e) => {
+  const card = e.target.closest('article');
+  focusCardHandler(card);
+});
+
+cards.addEventListener('focusin', (e) => {
+  const card = e.target.closest('article');
+  focusCardHandler(card);
+});
+

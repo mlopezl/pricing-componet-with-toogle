@@ -231,6 +231,10 @@ input:checked + .checkbox-slider::before {
     color: var(--Gray-650);
 }
 
+.card__focus button:focus{
+    outline: none;
+}
+
 @media(min-width: 426px ){
     .top-pattern{
         right: -100px;
