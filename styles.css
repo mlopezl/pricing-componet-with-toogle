@@ -10,6 +10,30 @@
     --Gray-650: hsl(233, 13%, 49%);
     --Gray-700: hsl(232, 13%, 33%);
     --shadow: hsl(237, 73%, 79%, 0.3);
+
+    /* Dynamic theme variables */
+    --bg-page: hsl(240, 78%, 98%);
+    --card-bg: hsl(0, 100%, 100%);
+    --title-color: hsl(233, 13%, 49%);
+    --price-color: hsl(232, 13%, 33%);
+    --text-muted: hsl(233, 13%, 49%);
+    --border-color: hsl(237, 73%, 79%, 0.3);
+    --theme-btn-bg: hsl(0, 100%, 100%);
+    --theme-btn-color: hsl(233, 13%, 49%);
+    --pattern-opacity: 1;
+}
+
+body.dark-mode{
+    --bg-page: hsl(232, 23%, 12%);
+    --card-bg: hsl(233, 21%, 17%);
+    --title-color: hsl(234, 25%, 75%);
+    --price-color: hsl(0, 0%, 100%);
+    --text-muted: hsl(234, 20%, 70%);
+    --border-color: hsl(233, 16%, 26%);
+    --theme-btn-bg: hsl(233, 21%, 17%);
+    --theme-btn-color: hsl(45, 100%, 70%);
+    --shadow: rgba(0, 0, 0, 0.45);
+    --pattern-opacity: 0.12;
 }
 
 *{
@@ -24,8 +48,9 @@ html{
 }
 
 body{
-    background-color: var(--Blue-50);
+    background-color: var(--bg-page);
     overflow-x: hidden;
+    transition: background-color 0.3s ease;
 }
 
 .container{
@@ -40,12 +65,71 @@ body{
     z-index: -1;
     top: -50px;
     right: -180px;
+    opacity: var(--pattern-opacity);
+    transition: opacity 0.3s ease;
 }
 
 .bottom-pattern{
     display: none;
+    opacity: var(--pattern-opacity);
+    transition: opacity 0.3s ease;
 }
 
+.theme-toggle{
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    z-index: 10;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--theme-btn-bg);
+    color: var(--theme-btn-color);
+    box-shadow: 0px 3px 15px var(--shadow);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover{
+    color: var(--light-purple-button);
+    transform: scale(1.08);
+    box-shadow: 0px 5px 18px var(--shadow);
+}
+
+body.dark-mode .theme-toggle:hover{
+    color: hsl(45, 100%, 82%);
+}
+
+.theme-toggle:active{
+    transform: scale(0.95);
+}
+
+.theme-toggle:focus-visible{
+    outline: 2px solid var(--light-purple-button);
+    outline-offset: 2px;
+}
+
+.theme-icon{
+    width: 22px;
+    height: 22px;
+    transition: transform 0.4s ease;
+}
+
+.theme-toggle:hover .theme-icon{
+    transform: rotate(15deg);
+}
+
+body.dark-mode .theme-icon{
+    transform: rotate(180deg);
+}
+
+body.dark-mode .theme-toggle:hover .theme-icon{
+    transform: rotate(195deg);
+}
 
 .header{
     width: 100%;
@@ -59,7 +143,8 @@ body{
 
 .title{
     font-size: 2.2rem;
-    color: var(--Gray-650);
+    color: var(--title-color);
+    transition: color 0.3s ease;
 }
 
 .selector{
@@ -69,11 +154,12 @@ body{
 
 .selector p{
     font-size: 1rem;
-    color: var(--Gray-650);
+    color: var(--title-color);
     font-weight: bold;
     opacity: 70%;
     display: flex;
     align-items: center;
+    transition: color 0.3s ease;
 }
 
 .switch {
@@ -144,7 +230,7 @@ input:checked + .checkbox-slider::before {
     width: 90%;
     max-width: 320px;
     height: 400px;
-    background-color: var(--White);
+    background-color: var(--card-bg);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -152,6 +238,7 @@ input:checked + .checkbox-slider::before {
     gap: 20px;
     border-radius: 10px;
     box-shadow: 0px 1px 15px var(--shadow);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card__focus{
@@ -160,7 +247,8 @@ input:checked + .checkbox-slider::before {
 
 .plan__tipe{
     font-size: 1.2rem;
-    color: var(--Gray-650);
+    color: var(--text-muted);
+    transition: color 0.3s ease;
 }
 
 .card__focus .plan__tipe{
@@ -170,9 +258,10 @@ input:checked + .checkbox-slider::before {
 .price{
     font-size: 2rem;
     font-weight: bold;
-    color: var(--Gray-700);
+    color: var(--price-color);
     display: flex;
     align-items: center;
+    transition: color 0.3s ease;
 }
 
 .price strong{
@@ -199,11 +288,12 @@ input:checked + .checkbox-slider::before {
     justify-content: center;
     width: 100%;
     height: 40px;
-    border-bottom: 1px solid var(--shadow);
-    color: var(--Gray-650);
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-muted);
     font-size: 0.9rem;
     font-weight: bold;
     opacity: 80%;
+    transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 .card__focus .plan__description li{
@@ -212,7 +302,7 @@ input:checked + .checkbox-slider::before {
 }
 
 .plan__description li:first-child{
-    border-top: 1px solid var(--shadow);
+    border-top: 1px solid var(--border-color);
 }
 
 .card button{
@@ -265,6 +355,11 @@ input:checked + .checkbox-slider::before {
 }
 
 @media(min-width: 769px ){
+    .theme-toggle{
+        top: 32px;
+        left: 32px;
+    }
+
     .top-pattern{
         top: 0px;
         right: -30px;
