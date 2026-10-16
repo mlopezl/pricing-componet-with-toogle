@@ -46,6 +46,49 @@ body{
     display: none;
 }
 
+.theme-toggle{
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    z-index: 10;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--White);
+    color: var(--Gray-650);
+    box-shadow: 0px 3px 15px var(--shadow);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover{
+    color: var(--light-purple-button);
+    transform: scale(1.08);
+    box-shadow: 0px 5px 18px var(--shadow);
+}
+
+.theme-toggle:active{
+    transform: scale(0.95);
+}
+
+.theme-toggle:focus-visible{
+    outline: 2px solid var(--light-purple-button);
+    outline-offset: 2px;
+}
+
+.theme-icon{
+    width: 22px;
+    height: 22px;
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover .theme-icon{
+    transform: rotate(15deg);
+}
 
 .header{
     width: 100%;
@@ -265,6 +308,11 @@ input:checked + .checkbox-slider::before {
 }
 
 @media(min-width: 769px ){
+    .theme-toggle{
+        top: 32px;
+        left: 32px;
+    }
+
     .top-pattern{
         top: 0px;
         right: -30px;
