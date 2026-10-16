@@ -5,6 +5,49 @@ const masterPrice = document.getElementById("master-price");
 const switchElement = document.querySelector(".switch");
 const cards = document.querySelector('.cards');
 
+// --- Theme (Light / Dark Mode) ---
+const themeToggle = document.getElementById("theme-toggle");
+
+function applyTheme(theme) {
+  if (theme === "dark") {
+    document.body.classList.add("dark-mode");
+    if (themeToggle) {
+      themeToggle.setAttribute("aria-label", "Switch to light mode");
+      themeToggle.setAttribute("title", "Switch to light mode");
+    }
+  } else {
+    document.body.classList.remove("dark-mode");
+    if (themeToggle) {
+      themeToggle.setAttribute("aria-label", "Switch to dark mode");
+      themeToggle.setAttribute("title", "Switch to dark mode");
+    }
+  }
+}
+
+// Initialize theme from localStorage or system preference
+const savedTheme = localStorage.getItem("theme");
+const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+const initialTheme = savedTheme || (prefersDark ? "dark" : "light");
+applyTheme(initialTheme);
+
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    const isDark = document.body.classList.contains("dark-mode");
+    const newTheme = isDark ? "light" : "dark";
+    applyTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+  });
+}
+
+// Listen for system theme changes if user hasn't explicitly chosen
+if (window.matchMedia) {
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+    if (!localStorage.getItem("theme")) {
+      applyTheme(e.matches ? "dark" : "light");
+    }
+  });
+}
+
 
 toggle.addEventListener("change", () => {
   if (!toggle.checked) {
